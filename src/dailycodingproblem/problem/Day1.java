@@ -22,7 +22,6 @@ public class Day1 {
 		for(String st : list) {
 			newList.add(Integer.parseInt(st));
 		}
-		
 		System.out.println("Type the equivalent of the 2 numbers");
 		int k = s.nextInt();
 		boolean addUpToK = false;
