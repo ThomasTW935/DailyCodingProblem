@@ -15,6 +15,30 @@ Follow-up: what if you can't use division?
 import java.util.*;
 public class Day2 {
 
+	public ArrayList<Integer> withDivision(ArrayList<Integer>list) {
+		int total = 1;
+		for(int i: list) {
+			total*=i;
+		}
+		for(int i = 0; i<list.size(); i++) {
+			int newElement = total/list.get(i);
+			list.set(i, newElement);
+		}
+		return list;
+	}
+	
+	public ArrayList<Integer> withoutDivision(ArrayList<Integer>list2) {
+		ArrayList<Integer> cloneList = (ArrayList<Integer>) list2.clone();
+		for(int i = 0; i<list2.size(); i++) {
+			for(int j = 0; j<list2.size(); j++) {
+				int newElement=1;
+				newElement *= list2.get(j);
+				list2.set(i, newElement);
+			}
+		}
+		return list2;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner s = new Scanner(System.in);
@@ -24,12 +48,12 @@ public class Day2 {
 		for(String st : list) {
 			newList.add(Integer.parseInt(st));
 		}
-		int total = 1;
-		for(int i: newList) {
-			total*=i;
-		}
-		System.out.println(total);
+		Day2 da = new Day2();
+		ArrayList<Integer> output1 = da.withDivision((ArrayList<Integer>) newList.clone());
+		System.out.println(newList);
+		ArrayList<Integer> output2 = da.withoutDivision((ArrayList<Integer>) newList.clone());
+		System.out.println(output1);
+		System.out.println(output2);
 		
 	}
-
 }
